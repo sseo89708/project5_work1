@@ -284,3 +284,21 @@ def insert_book(title, isbn):
 if __name__ == '__main__':
     insert_book('A Sudden Light', '9781439187036')
 
+6. update
+updateData.py
+
+from mysql.connector import MySQLConnection, Error
+from config import read_config
+
+def update_book(book_id, title):
+    # read database configuration
+    config = read_config()
+
+    # prepare query and data
+    query = """ UPDATE books
+                SET title = %s
+                WHERE id = %s """
+
+    data = (title, book_id)
+
+    affected_rows = 0  # Initialize the variable to store the number of affected rows
