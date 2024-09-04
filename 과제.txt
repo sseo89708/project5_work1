@@ -396,3 +396,6 @@ def delete(id):
   affected_rows = delete_book(id)
   print(f'Number of affected rows: {affected_rows}')
   return redirect('/')
+
+if  __name__ == '__main__':  
+    app.run(debug=True)
