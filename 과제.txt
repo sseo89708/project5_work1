@@ -341,3 +341,24 @@ def delete_book(book_id):
     data = (book_id, ) 
 
     affected_rows = 0  # Initialize the variable to store the number of affected rows
+    try:
+        # connect to the database
+        with MySQLConnection(**config) as conn:
+            # update book title
+            with conn.cursor() as cursor:
+                cursor.execute(query, data)
+
+                # get the number of affected rows
+                affected_rows = cursor.rowcount
+
+            # accept the changes
+            conn.commit()
+
+    except Error as error:
+        print(error)
+
+    return affected_rows  # Return the number of affected rows
+
+if __name__ == '__main__':
+    affected_rows = delete_book(37)
+    print(f'Number of affected rows: {affected_rows}')
