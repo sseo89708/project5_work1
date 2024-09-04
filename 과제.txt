@@ -1,0 +1,11 @@
+create user 'test'@'%' identified by 'password';
+grant all privileges on *.* to 'test'@'%';
+
+pip install mysql-connector-python
+
+01_connect.py
+
+import mysql.connector
+
+# Initialize a variable to hold the database connection
+conn = None
