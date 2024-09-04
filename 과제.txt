@@ -362,3 +362,20 @@ def delete_book(book_id):
 if __name__ == '__main__':
     affected_rows = delete_book(37)
     print(f'Number of affected rows: {affected_rows}')
+
+
+8. flask에서 호출
+app.py
+
+from flask import Flask,render_template,redirect
+from fetchall import query_with_fetchall
+from insertData import insert_book
+from updateDate import update_book
+from deleteData import delete_book
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+  datas = query_with_fetchall()
+  return render_template('list.html',datas=datas)
