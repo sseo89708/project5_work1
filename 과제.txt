@@ -33,3 +33,13 @@ finally:
     # Close the database connection in the 'finally' block to ensure it happens
     if conn is not None and conn.is_connected():
         conn.close()
+
+3. 연결정보 configuration file로 분리 작성
+app.ini
+
+[mysql]
+host = localhost
+port = 3306
+database = pub
+user = <user>
+password = <password>
